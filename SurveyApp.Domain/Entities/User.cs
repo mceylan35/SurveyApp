@@ -1,4 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using SurveyApp.Domain.Attributes;
+using SurveyApp.Domain.Common;
+using SurveyApp.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +40,14 @@ namespace SurveyApp.Domain.Entities
             {
                 Id = Guid.NewGuid(),
                 Email = email,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
+                PasswordHash=passwordHash
             };
+        }
+
+        public void UpdatePassword(string newPasswordHash)
+        {
+            PasswordHash = newPasswordHash;
         }
     }
 }
