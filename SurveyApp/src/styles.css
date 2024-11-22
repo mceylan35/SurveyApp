@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import 'sweetalert2/dist/sweetalert2.css';
+/* Tailwind eklentileri */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Material tasarım düzenlemeleri */
+.mat-card {
+  @apply shadow-lg;
+}
+
+.mat-form-field {
+  @apply w-full mb-4;
+}
+
+.mat-card-header {
+  @apply mb-6;
+}
+
+.mat-card-title {
+  @apply text-2xl font-bold;
+}
+
+.mat-button, .mat-raised-button {
+  @apply h-10 px-6;
+}
+mat-form-field {
+  display: block !important;
+  margin-bottom: 1rem;
+}
+
+.mat-mdc-form-field {
+  display: block !important;
+  width: 100%;
+}
+
+.mat-mdc-text-field-wrapper {
+  background-color: white !important;
+}
