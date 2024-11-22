@@ -6,7 +6,7 @@
 
 ## 📌 Proje Genel Bakış
 
-Clean Architecture prensipleri kullanılarak .NET Core 7 (Backend) ve Angular 16 (Frontend) ile geliştirilmiş modern bir anket yönetim sistemi.
+Clean Architecture prensipleri kullanılarak .NET Core 8 (Backend) ve Angular 19 (Frontend) ile geliştirilmiş modern bir anket yönetim sistemi.
 
 ## 🚀 Özellikler
 
