@@ -1,6 +1,6 @@
 # 📊 SurveyApp (Anket Uygulaması)
 
-[![.NET Core](https://img.shields.io/badge/.NET%20Core-7.0-blue.svg)](https://dotnet.microsoft.com/download)
+[![.NET Core](https://img.shields.io/badge/.NET%20Core-8.0-blue.svg)](https://dotnet.microsoft.com/download)
 [![Angular](https://img.shields.io/badge/Angular-16-red.svg)](https://angular.io/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-4.4+-green.svg)](https://www.mongodb.com/)
 
@@ -20,7 +20,7 @@ Clean Architecture prensipleri kullanılarak .NET Core 7 (Backend) ve Angular 16
 ## 🛠️ Kullanılan Teknolojiler
 
 ### Backend
-- **.NET Core 7**
+- **.NET Core 8**
 - **MongoDB** - NoSQL Veritabanı
 - **MediatR** - CQRS Pattern implementasyonu
 - **Clean Architecture**
