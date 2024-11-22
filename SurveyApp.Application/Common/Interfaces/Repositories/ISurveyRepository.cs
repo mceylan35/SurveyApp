@@ -9,7 +9,9 @@ namespace SurveyApp.Application.Common.Interfaces.Repositories
 {
     public interface ISurveyRepository : IBaseRepository<Survey>
     {
+        Task<(List<Survey> Surveys, int TotalCount)> GetPaginatedListAsync(int pageNumber, int pageSize);
         Task<IEnumerable<Survey>> GetAllWithOptionsAsync();
         Task<Survey> GetByIdWithOptionsAsync(Guid id);
+
     }
 }
