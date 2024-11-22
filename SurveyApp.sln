@@ -11,13 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{78AE5537-F8AD-4860-B9AB-EFC2AA717BDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveyApp.Domain", "SurveyApp.Domain\SurveyApp.Domain.csproj", "{0A15510D-C7EA-445B-AA07-898789D28C72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurveyApp.Domain", "SurveyApp.Domain\SurveyApp.Domain.csproj", "{0A15510D-C7EA-445B-AA07-898789D28C72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveyApp.Application", "SurveyApp.Application\SurveyApp.Application.csproj", "{D06FBCDB-124B-4E67-BB02-C46011A64706}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurveyApp.Application", "SurveyApp.Application\SurveyApp.Application.csproj", "{D06FBCDB-124B-4E67-BB02-C46011A64706}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveyApp.Infrastructure", "SurveyApp.Infrastructure\SurveyApp.Infrastructure.csproj", "{FC769844-EC14-43AC-A6EB-760DF012F6B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurveyApp.Infrastructure", "SurveyApp.Infrastructure\SurveyApp.Infrastructure.csproj", "{FC769844-EC14-43AC-A6EB-760DF012F6B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurveyApp.API", "SurveyApp.API\SurveyApp.API.csproj", "{43C0EB96-C58E-4C28-8562-4F3CA62E1056}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurveyApp.API", "SurveyApp.API\SurveyApp.API.csproj", "{43C0EB96-C58E-4C28-8562-4F3CA62E1056}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AngularApp", "AngularApp", "{B665902D-DD39-4249-916B-120FD411EB52}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "SurveyApp", "SurveyApp\SurveyApp.esproj", "{F7BEF1D1-97E3-4001-8E43-29A16CC23D70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,12 @@ Global
 		{43C0EB96-C58E-4C28-8562-4F3CA62E1056}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43C0EB96-C58E-4C28-8562-4F3CA62E1056}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43C0EB96-C58E-4C28-8562-4F3CA62E1056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7BEF1D1-97E3-4001-8E43-29A16CC23D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7BEF1D1-97E3-4001-8E43-29A16CC23D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7BEF1D1-97E3-4001-8E43-29A16CC23D70}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F7BEF1D1-97E3-4001-8E43-29A16CC23D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7BEF1D1-97E3-4001-8E43-29A16CC23D70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7BEF1D1-97E3-4001-8E43-29A16CC23D70}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +63,8 @@ Global
 		{D06FBCDB-124B-4E67-BB02-C46011A64706} = {A9BFAD75-938A-4448-879C-08011E89BB91}
 		{FC769844-EC14-43AC-A6EB-760DF012F6B9} = {5ED17355-F32B-4F6D-B8B8-958EC6FAFDE0}
 		{43C0EB96-C58E-4C28-8562-4F3CA62E1056} = {78AE5537-F8AD-4860-B9AB-EFC2AA717BDC}
+		{B665902D-DD39-4249-916B-120FD411EB52} = {78AE5537-F8AD-4860-B9AB-EFC2AA717BDC}
+		{F7BEF1D1-97E3-4001-8E43-29A16CC23D70} = {B665902D-DD39-4249-916B-120FD411EB52}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1754829D-53C1-4359-9D60-1E8FD6559862}

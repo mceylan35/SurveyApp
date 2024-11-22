@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SurveyApp.Application.Features.Surveys.Commands.CreateSurvey;
@@ -10,6 +11,7 @@ namespace SurveyApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class SurveysController : BaseController
     {
         IMediator _mediator;

@@ -33,8 +33,6 @@ namespace SurveyApp.Application.Features.Surveys.Commands.VoteSurvey
         public async Task<Result<bool>> Handle(VoteSurveyCommand request, CancellationToken cancellationToken)
         {
             var userId = _currentUserService.UserId;
-            if (!userId.HasValue)
-                return Result<bool>.Failure("User not authenticated");
 
             var hasVoted = await _voteRepository.HasUserVotedAsync(request.SurveyId, userId.Value);
             if (hasVoted)

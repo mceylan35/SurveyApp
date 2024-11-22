@@ -30,8 +30,6 @@ namespace SurveyApp.Application.Features.Surveys.Commands.CreateSurvey
         public async Task<Result<bool>> Handle(CreateSurveyCommand request, CancellationToken cancellationToken)
         {
             var userId = _currentUserService.UserId;
-            if (!userId.HasValue)
-                return Result<bool>.Failure("User not authenticated");
 
             var survey = Survey.Create(request.Title, userId.Value);
             await _surveyRepository.CreateAsync(survey);
