@@ -1,4 +1,8 @@
 ﻿using Microsoft.VisualBasic.FileIO;
+using MongoDB.Bson.Serialization.Attributes;
+using SurveyApp.Domain.Attributes;
+using SurveyApp.Domain.Common;
+using SurveyApp.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,29 +16,13 @@ namespace SurveyApp.Domain.Entities
     public class Survey : MongoEntity
     {
         [BsonElement("title")]
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
-       
 
-        [BsonElement("options")]
-        private readonly List<Option> _options = new();
-
-        [BsonIgnore]
-        public IReadOnlyCollection<Option> Options => _options.AsReadOnly();
-
-        [BsonElement("votes")]
-        private readonly List<Vote> _votes = new();
-
-        [BsonIgnore]
-        public IReadOnlyCollection<Vote> Votes => _votes.AsReadOnly();
-
-        public static Survey Create(string title, Guid creatorId, List<string> options)
+        public static Survey Create(string title, Guid creatorId)
         {
             if (string.IsNullOrEmpty(title))
                 throw new DomainException("Title cannot be empty");
-
-            if (options.Count < 2)
-                throw new DomainException("Survey must have at least 2 options");
 
             var survey = new Survey
             {
@@ -44,20 +32,9 @@ namespace SurveyApp.Domain.Entities
                 CreatedAt = DateTime.UtcNow
             };
 
-            foreach (var optionText in options)
-            {
-                survey._options.Add(Option.Create(optionText));
-            }
-
             return survey;
         }
 
-        public void Vote(Guid userId, Guid optionId)
-        {
-            var option = _options.FirstOrDefault(o => o.Id == optionId)
-                ?? throw new DomainException("Option not found");
-
-            option.IncrementVoteCount();
-        }
+       
     }
 }

@@ -1,4 +1,8 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using SurveyApp.Domain.Attributes;
+using SurveyApp.Domain.Common;
+using SurveyApp.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,17 +11,21 @@ using System.Threading.Tasks;
 
 namespace SurveyApp.Domain.Entities
 {
+    [BsonCollection("Options")]
     public class Option : MongoEntity
     {
         [BsonElement("text")]
-        public string Text { get; private set; }
+        public string Text { get; set; }
+        [BsonElement("surveyId")]
+        [BsonRepresentation(BsonType.String)]
+        public Guid SurveyId { get; private set; }
 
         [BsonElement("voteCount")]
-        public int VoteCount { get; private set; }
+        public int VoteCount { get; set; }
 
-        protected Option() { }
+        public Option() { }
 
-        public static Option Create(string text)
+        public static Option Create(string text, Guid surveyId)
         {
             if (string.IsNullOrEmpty(text))
                 throw new DomainException("Option text cannot be empty");
@@ -26,12 +34,12 @@ namespace SurveyApp.Domain.Entities
             {
                 Id = Guid.NewGuid(),
                 Text = text,
-                VoteCount = 0,
+                SurveyId = surveyId,
                 CreatedAt = DateTime.UtcNow
             };
         }
 
-        internal void IncrementVoteCount()
+        public void IncrementVoteCount()
         {
             VoteCount++;
         }

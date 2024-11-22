@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SurveyApp.Domain.Attributes;
+using SurveyApp.Domain.Common;
 
 namespace SurveyApp.Domain.Entities
 {
@@ -13,17 +15,17 @@ namespace SurveyApp.Domain.Entities
     {
         [BsonElement("userId")]
         [BsonRepresentation(BsonType.String)]
-        public Guid UserId { get; private set; }
+        public Guid UserId { get; set; }
 
         [BsonElement("optionId")]
         [BsonRepresentation(BsonType.String)]
-        public Guid OptionId { get; private set; }
+        public Guid OptionId { get; set; }
 
         [BsonElement("surveyId")]
         [BsonRepresentation(BsonType.String)]
-        public Guid SurveyId { get; private set; }
+        public Guid SurveyId { get; set; }
 
-        protected Vote() { }
+        public Vote() { }
 
         public static Vote Create(Guid userId, Guid optionId, Guid surveyId)
         {
@@ -33,7 +35,8 @@ namespace SurveyApp.Domain.Entities
                 UserId = userId,
                 OptionId = optionId,
                 SurveyId = surveyId,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
+                CreatorId = userId
             };
         }
     }
