@@ -1,0 +1,110 @@
+ 
+:host {
+  display: block;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.survey-card {
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+}
+
+mat-card-title {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.survey-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-field,
+.option-field {
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.options-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.options-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.remove-button {
+  margin-top: -20px;
+}
+
+.add-button {
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}
+
+::ng-deep {
+  .mat-form-field-appearance-outline {
+    .mat-form-field-wrapper {
+      margin: 0;
+    }
+    
+    .mat-form-field-flex {
+      margin-top: 0;
+    }
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .mat-form-field-subscript-wrapper {
+    margin-top: 0;
+  }
+}
+
+mat-spinner {
+  margin-right: 8px;
+  display: inline-block;
+}
+
+button[type="submit"] {
+  min-width: 140px;
+
+  &:disabled {
+    background-color: rgba(0,0,0,0.12);
+    color: rgba(0,0,0,0.38);
+  }
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white;
+}

@@ -1,0 +1,69 @@
+<div class="container mx-auto p-4">
+  <mat-card class="survey-card">
+    <mat-card-header>
+      <mat-card-title>Create New Survey</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()" class="survey-form">
+        <div class="form-field">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Survey Title</mat-label>
+            <input matInput formControlName="title" placeholder="Enter survey title">
+            <mat-error *ngIf="surveyForm.get('title')?.errors?.['required']">
+              Title is required
+            </mat-error>
+            <mat-error *ngIf="surveyForm.get('title')?.errors?.['minlength']">
+              Title must be at least 3 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div formArrayName="options" class="options-section">
+          <h3 class="options-title">Options</h3>
+          
+          <div *ngFor="let option of options.controls; let i=index" class="option-row">
+            <mat-form-field appearance="outline" class="option-field">
+              <mat-label>Option {{ i + 1 }}</mat-label>
+              <input matInput [formControlName]="i" [placeholder]="'Enter option ' + (i + 1)">
+              <mat-error *ngIf="option.errors?.['required']">
+                Option text is required
+              </mat-error>
+            </mat-form-field>
+            
+            <button type="button" 
+                    mat-icon-button 
+                    color="warn" 
+                    (click)="removeOption(i)" 
+                    [disabled]="options.length <= 2"
+                    class="remove-button">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+
+          <button type="button" 
+                  mat-stroked-button 
+                  (click)="addOption()"
+                  class="add-button"
+                  [disabled]="options.length >= 10">
+            <mat-icon>add</mat-icon>
+            Add Option
+          </button>
+        </div>
+
+        <div class="button-row">
+          <button type="button" mat-button color="warn" routerLink="/surveys">
+            Cancel
+          </button>
+          <button mat-raised-button 
+                  color="primary" 
+                  type="submit" 
+                  [disabled]="!surveyForm.valid || loading">
+            <mat-spinner diameter="20" *ngIf="loading"></mat-spinner>
+            <span *ngIf="!loading">Create Survey</span>
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

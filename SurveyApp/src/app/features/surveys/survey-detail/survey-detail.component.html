@@ -1,0 +1,40 @@
+<!-- survey-detail.component.html -->
+<div class="container mx-auto p-4 max-w-2xl">
+  <mat-card *ngIf="survey">
+    <mat-card-header>
+      <mat-card-title>{{ survey.title }}</mat-card-title>
+      <mat-card-subtitle>Total Votes: {{ survey.totalVotes }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div *ngIf="loading" class="flex justify-center my-4">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <!-- Oylama sonuçları için canvas -->
+      <div *ngIf="survey.totalVotes > 0" class="my-4">
+        <canvas #surveyChart></canvas>
+      </div>
+
+      <div class="my-4">
+        <mat-radio-group [(ngModel)]="selectedOptionId">
+          <div *ngFor="let option of survey.options" class="mb-2">
+            <mat-radio-button [value]="option.id">
+              {{ option.text }} ({{ option.voteCount }} votes - {{ option.percentage.toFixed(1) }}%)
+            </mat-radio-button>
+          </div>
+        </mat-radio-group>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" 
+              (click)="submitVote()" 
+              [disabled]="!selectedOptionId || loading"
+              *ngIf="authService.isAuthenticated()">
+        Vote
+      </button>
+      <a mat-button routerLink="/surveys">Back to List</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
