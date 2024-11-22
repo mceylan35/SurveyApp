@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="3.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Filters\" />
-    <Folder Include="Middleware\" />
+    <ProjectReference Include="..\SurveyApp.Application\SurveyApp.Application.csproj" />
+    <ProjectReference Include="..\SurveyApp.Domain\SurveyApp.Domain.csproj" />
+    <ProjectReference Include="..\SurveyApp.Infrastructure\SurveyApp.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
