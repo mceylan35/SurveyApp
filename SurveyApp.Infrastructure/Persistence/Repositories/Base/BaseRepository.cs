@@ -1,4 +1,7 @@
 ﻿using MongoDB.Driver;
+using SurveyApp.Application.Common;
+using SurveyApp.Application.Common.Interfaces;
+using SurveyApp.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace SurveyApp.Infrastructure.Persistence.Repositories.Base
 {
-    public abstract class BaseRepository<T> where T : Entity
+    public abstract class BaseRepository<T> where T : MongoEntity
     {
         protected readonly IMongoCollection<T> Collection;
 
-        protected BaseRepository(IMongoDatabase database, string collectionName)
+        protected BaseRepository(IMongoDbContext context)
         {
-            Collection = database.GetCollection<T>(collectionName);
+            Collection = context.GetCollection<T>();
         }
 
         public async Task<T> GetByIdAsync(Guid id)
