@@ -1,7 +1,7 @@
 # 📊 SurveyApp (Anket Uygulaması)
 
 [![.NET Core](https://img.shields.io/badge/.NET%20Core-8.0-blue.svg)](https://dotnet.microsoft.com/download)
-[![Angular](https://img.shields.io/badge/Angular-16-red.svg)](https://angular.io/)
+[![Angular](https://img.shields.io/badge/Angular-19-red.svg)](https://angular.io/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-4.4+-green.svg)](https://www.mongodb.com/)
 
 ## 📌 Proje Genel Bakış
@@ -27,7 +27,7 @@ Clean Architecture prensipleri kullanılarak .NET Core 7 (Backend) ve Angular 16
 - **JWT** - Kimlik Doğrulama
 
 ### Frontend
-- **Angular 16**
+- **Angular 19**
 - **Angular Material** - UI Bileşenleri
 - **Tailwind CSS** - Stil
 - **SweetAlert2** - Bildirimler
@@ -65,7 +65,7 @@ src/
 - Visual Studio 2022
 - MongoDB
 - Node.js (v16 veya üzeri)
-- .NET Core 7 SDK
+- .NET Core 8 SDK
 - Angular CLI
 
 ### Backend Kurulum
