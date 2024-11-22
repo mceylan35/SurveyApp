@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SurveyApp.Application.Common.Interfaces
+namespace SurveyApp.Application.Common.Interfaces.Services
 {
     public interface ICurrentUserService
     {

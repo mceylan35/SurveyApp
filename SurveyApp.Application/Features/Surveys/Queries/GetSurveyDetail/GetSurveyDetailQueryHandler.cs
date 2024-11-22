@@ -1,6 +1,14 @@
 ﻿using MediatR;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using SurveyApp.Application.Common.Interfaces;
+using SurveyApp.Application.Common.Interfaces.Repositories;
+using SurveyApp.Application.Common.Models;
+using SurveyApp.Application.Common.Results;
+using SurveyApp.Application.DTOs.Options;
+using SurveyApp.Application.DTOs.Surveys;
 using SurveyApp.Domain.Entities;
+using SurveyApp.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,33 +17,38 @@ using System.Threading.Tasks;
 
 namespace SurveyApp.Application.Features.Surveys.Queries.GetSurveyDetail
 {
-    public class GetSurveyDetailQueryHandler : IRequestHandler<GetSurveyDetailQuery, SurveyDetailDto>
+    public class GetSurveyDetailQueryHandler : IRequestHandler<GetSurveyDetailQuery, Result<SurveyDetailDto>>
     {
-        private readonly IMongoDbContext _context;
+        private readonly ISurveyRepository _surveyRepository;
+        private readonly IOptionRepository _optionRepository;
 
-        public GetSurveyDetailQueryHandler(IMongoDbContext context)
+        public GetSurveyDetailQueryHandler(
+            ISurveyRepository surveyRepository,
+            IOptionRepository optionRepository)
         {
-            _context = context;
+            _surveyRepository = surveyRepository;
+            _optionRepository = optionRepository;
         }
 
-        public async Task<SurveyDetailDto> Handle(GetSurveyDetailQuery request, CancellationToken cancellationToken)
+        public async Task<Result<SurveyDetailDto>> Handle(GetSurveyDetailQuery request, CancellationToken cancellationToken)
         {
-            var survey = await _context.Surveys
-                .Find(s => s.Id == request.Id)
-                .FirstOrDefaultAsync(cancellationToken);
+          var surveyEntity = await  _surveyRepository.GetByIdAsync(request.Id);
+         
+            if (surveyEntity == null)
+                throw new NotFoundException(nameof(Survey));
 
-            if (survey == null)
-                throw new NotFoundException(nameof(Survey), request.Id);
 
-            var totalVotes = survey.Options.Sum(o => o.VoteCount);
 
-            return new SurveyDetailDto
+            var options = await _optionRepository.GetBySurveyIdAsync(surveyEntity.Id);
+            var totalVotes = options.Sum(o => o.VoteCount);
+
+            var surveyDetail = new SurveyDetailDto
             {
-                Id = survey.Id,
-                Title = survey.Title,
-                CreatorId = survey.CreatorId,
-                CreatedAt = survey.CreatedAt,
-                Options = survey.Options.Select(o => new OptionDetailDto
+                Id = surveyEntity.Id,
+                Title = surveyEntity.Title,
+                CreatorId = surveyEntity.CreatorId,
+                CreatedAt = surveyEntity.CreatedAt,
+                Options = options.Select(o => new OptionDetailDto
                 {
                     Id = o.Id,
                     Text = o.Text,
@@ -44,6 +57,8 @@ namespace SurveyApp.Application.Features.Surveys.Queries.GetSurveyDetail
                 }).ToList(),
                 TotalVotes = totalVotes
             };
+
+            return Result<SurveyDetailDto>.Success(surveyDetail);
         }
     }
 }

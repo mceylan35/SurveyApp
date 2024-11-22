@@ -17,8 +17,8 @@ namespace SurveyApp.Application.Features.Surveys.Commands.CreateSurvey
 
             RuleFor(x => x.Options)
                 .NotEmpty()
-                .Must(x => x.Count >= 1)
-                .WithMessage("At least 1 options are required");
+                .Must(x => x.Count >= 2)
+                .WithMessage("At least 2 options are required");
         }
     }
 }
